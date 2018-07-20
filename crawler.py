@@ -12,8 +12,26 @@ def horse_page_link(url):
     link_list = [HOME_URL + x.get('href') for x in soup.find_all('a', class_='tx-mid tx-low') ]
     return link_list
 
+tag_to_text = lambda x: sub("", x).split('\n') 
+split_tr = lambda x: str(x).split('</tr>')
+
+def get_previous_race_row(soup):
+    race_table = soup.select("table.tb01")[2]
+    return [tag_to_text(x)  for x in split_tr(race_table)]
+
+def horse_data(url):
+    soup = url_to_soup(url)
+
+    # 過去のレースデータ
+    pre_race_data = get_previous_race_row(soup)
+    df = pd.DataFrame(pre_race_data)[1:][[2,3,10,11,13,14,15,19,23]].dropna().rename(columns={
+        2:'date', 3:'place', 10:'len', 11:'wether', 13:'popularity', 14:'rank', 15:'time',19:'weight',23:'money'})
+    return df
+
 #soup = url_to_soup('https://www.platform-one.co.jp/contact/index.php?act=input')
 #print(soup.prettify())
 
-horse_page_link_list = horse_page_link('https://www.nankankeiba.com/race_info/2018071921050110.do')
-print(horse_page_link_list)
+horse_page_link_list = horse_page_link('https://www.nankankeiba.com/race_info/2018072021050210.do')
+#print(horse_page_link_list[0])
+df = horse_data(horse_page_link_list[0])
+print(df)
