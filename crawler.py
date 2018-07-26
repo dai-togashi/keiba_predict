@@ -53,8 +53,8 @@ def result_data(url):
 #soup = url_to_soup('https://www.platform-one.co.jp/contact/index.php?act=input')
 #print(soup.prettify())
 
-#horse_page_link_list = horse_page_link('https://www.nankankeiba.com/race_info/2018072419040111.do')
+#horse_page_link_list = horse_page_link('https://www.nankankeiba.com/race_info/2018072619040310.do')
 #df = horse_data(horse_page_link_list[0])
 #print(df)
 
-print(result_data('https://www.nankankeiba.com/result/2018072419040108.do'))
+#print(result_data('https://www.nankankeiba.com/result/2018072419040108.do'))
