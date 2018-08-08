@@ -21,8 +21,13 @@ model.compile(loss='categorical_crossentropy',
 #history = model.fit(X_train, y_train, epochs=100, batch_size=50, validation_split=0.1)
 
 import numpy as np
-data = np.random.random((100, 1350))
+#data = np.random.random((100, 1350))
 #print(data)
-labels = np.random.randint(10, size=(100, 1))
+#labels = np.random.randint(10, size=(100, 1))
 #print(labels)
-history = model.fit(data, labels, epochs=100, batch_size=50, validation_split=0.1)
+#history = model.fit(data, labels, epochs=100, batch_size=50, validation_split=0.1)
+
+#y_test = keras.utils.to_categorical(np.random.randint(10, size=(100, 1)), num_classes=10)
+#print(y_test)
+
+print(np.random.randint(10, size=(100, 1)))
